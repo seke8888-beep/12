@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Baǵa — сравнение цен в магазинах Казахстана">
+  <title>Baǵa — агрегатор цен Казахстана</title>
+  <style>
+    :root { --green:#214b3a; --light:#f8f7f2; --coral:#e97859; --text:#20271f; --muted:#748078; --line:#e3e5de; }
+    * { box-sizing:border-box; } body { margin:0; color:var(--text); background:var(--light); font-family:Arial,Helvetica,sans-serif; }
+    header { height:72px; background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 max(24px,6vw); }
+    .logo { color:var(--green); font-size:29px; font-weight:800; letter-spacing:-2px; } .logo b { color:var(--coral); }
+    nav { display:flex; gap:28px; color:#526057; font-size:14px; } button { font:inherit; cursor:pointer; }
+    .outline { border:1px solid #ccd4cc; border-radius:9px; background:white; color:var(--green); padding:10px 16px; font-weight:700; }
+    .hero { text-align:center; color:white; padding:58px 20px 50px; background:radial-gradient(circle at 15% 0,#39715a,transparent 28%),var(--green); }
+    .eyebrow { color:#a9cdb4; font-size:11px; font-weight:800; letter-spacing:1.5px; } h1 { margin:12px 0; font-size:44px; line-height:1.07; letter-spacing:-1.5px; } h1 em { color:#f0c77e; font-family:Georgia,serif; }
+    .hero p { color:#d5e3d8; margin:0 0 24px; } .search { max-width:670px; display:flex; gap:8px; align-items:center; padding:6px 6px 6px 18px; margin:auto; background:white; border-radius:12px; box-shadow:0 10px 28px #15342688; }
+    .search input { flex:1; min-width:0; border:0; outline:0; color:#27352d; font-size:14px; } .primary { background:var(--coral); border:0; color:#fff; border-radius:8px; padding:13px 20px; font-weight:800; }
+    main { max-width:1050px; margin:auto; padding:34px 24px 60px; } .crumb { color:#7f8b82; font-size:12px; }.product { margin:25px 0; display:flex; align-items:center; gap:18px; }.icon { width:78px; height:78px; display:grid; place-items:center; border-radius:16px; background:#eaf2ea; font-size:43px; }
+    h2 { margin:5px 0; font-size:27px; letter-spacing:-1px; }.product p { margin:0; color:var(--muted); font-size:12px; }.favorite { margin-left:auto; border:0; background:transparent; color:#5c695f; font-weight:700; }.favorite span { color:var(--coral); font-size:25px; vertical-align:-3px; }
+    .cards { display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:14px; }.card { padding:20px 22px; border:1px solid var(--line); border-radius:13px; background:#fff; }.card.best { background:#fff5e7; border-color:#f0d8a5; }.card label { color:#829087; font-size:10px; font-weight:800; letter-spacing:1.2px; }.card strong { display:block; margin:9px 0 4px; font-size:25px; letter-spacing:-1px; }.best strong { color:#d85f40; }.card p { margin:0; color:var(--muted); font-size:11px; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; margin:38px 0 14px; }.section-head h3 { margin:0; font-size:21px; }.section-head p { margin:4px 0 0; color:var(--muted); font-size:12px; }.offers { overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#fff; }.offer { display:grid; grid-template-columns:28px 1.25fr 1.35fr 1fr 110px; gap:12px; align-items:center; padding:17px 20px; border-bottom:1px solid #eceee9; }.offer:last-child { border-bottom:0; }.rank { color:#859087; font-weight:800; }.shop b { display:block; font-size:15px; }.shop small { color:#da9b29; }.meta { display:flex; gap:12px; color:#67736a; font-size:11px; }.cost { text-align:right; }.cost strong { display:block; font-size:17px; }.cost small { color:#89938c; font-size:10px; }.go { border:0; border-radius:8px; background:#e8f0e8; color:var(--green); padding:10px 9px; font-size:12px; font-weight:800; }
+    footer { display:flex; gap:18px; align-items:center; padding:27px max(24px,6vw); background:#183326; color:#bdc9bd; font-size:11px; } footer .logo { color:white; font-size:22px; } footer p:last-child { margin-left:auto; }
+    @media (max-width:700px) { nav { display:none; } h1 { font-size:34px; } main { padding:25px 14px 45px; } .product { flex-wrap:wrap; } .favorite { margin-left:0; }.cards { grid-template-columns:1fr; }.offer { grid-template-columns:22px 1fr auto; }.meta { display:none; }.cost { grid-column:2; text-align:left; }.go { grid-column:3; grid-row:1 / span 2; }.section-head { align-items:center; } footer { display:block; } footer p:last-child { margin-top:15px; } }
+  </style>
+</head>
+<body>
+  <header><div class="logo">baǵa<b>.</b></div><nav><span>Каталог</span><span>Как это работает</span><span>Магазины</span></nav><button class="outline" onclick="alert('Демо-версия: авторизация появится после подключения сервера.')">Войти</button></header>
+  <section class="hero"><div class="eyebrow">УМНЫЙ ПОИСК ПОКУПОК</div><h1>Находите лучшее.<br><em>Платите меньше.</em></h1><p>Сравниваем цены в магазинах Казахстана, чтобы вы всегда выбирали выгодно.</p><div class="search">⌕ <input id="search" value="Logitech M185" aria-label="Поиск товара" placeholder="Название, бренд или штрихкод"><button class="primary" onclick="searchProduct()">Найти цены</button></div></section>
+  <main><div class="crumb">Главная　›　Компьютерные мыши　›　<span id="crumb">Logitech M185</span></div><section class="product"><div class="icon" id="icon">🖱️</div><div><div class="eyebrow" id="brand" style="color:#6f947d">LOGITECH · В НАЛИЧИИ</div><h2 id="title">Logitech M185</h2><p>Беспроводная мышь · Артикул: M185-GR</p></div><button class="favorite" onclick="favorite()"><span id="heart">♡</span> <span id="favText" style="font-size:14px;color:#5c695f;vertical-align:0">В избранное</span></button></section>
+  <section class="cards"><article class="card best"><label>ЛУЧШАЯ ЦЕНА</label><strong>7 800 ₸</strong><p>в Kaspi →</p></article><article class="card"><label>СРЕДНЯЯ ЦЕНА</label><strong>8 273 ₸</strong><p>Среди 4 предложений</p></article><article class="card"><label>ДИАПАЗОН ЦЕН</label><strong>7 800 — 8 600 ₸</strong><p>Разница 800 ₸</p></article></section>
+  <section class="section-head"><div><h3>Предложения магазинов</h3><p>Цены обновлены сегодня</p></div><button class="outline" id="sort" onclick="sortOffers()">По цене ↑</button></section><section class="offers" id="offers"></section></main>
+  <footer><div class="logo">baǵa<b>.</b></div><p>Ваш помощник в выгодных покупках</p><p>© 2026 Baǵa. Сделано в Казахстане 🇰🇿</p></footer>
+  <script>
+    const items=[{n:'Logitech M185',b:'LOGITECH',i:'🖱️'},{n:'Xiaomi Redmi Note 13',b:'XIAOMI',i:'📱'},{n:'Apple AirPods Pro 2',b:'APPLE',i:'🎧'}]; let asc=true;
+    let offers=[['Kaspi',7800,'Алматы','Бесплатно','сегодня, 10:34','#ef4444'],['Sulpak',8190,'Алматы','от 1 000 ₸','сегодня, 09:12','#f59e0b'],['Белый Ветер',8500,'Астана','Бесплатно','вчера, 18:20','#2563eb'],['Technodom',8600,'Алматы','Бесплатно','сегодня, 08:55','#e11d48']];
+    function showOffers(){document.getElementById('offers').innerHTML=offers.map((x,i)=>`<article class="offer"><div class="rank">${i+1}</div><div class="shop"><b style="color:${x[5]}">${x[0]}</b><small>★ 4.${9-i}</small></div><div class="meta"><span>📍 ${x[2]}</span><span>◌ ${x[3]}</span></div><div class="cost"><strong>${x[1].toLocaleString('ru-RU')} ₸</strong><small>Обновлено ${x[4]}</small></div><button class="go" onclick="alert('Демо-версия: ссылка на магазин не подключена')">В магазин ↗</button></article>`).join('')};
+    function searchProduct(){let q=document.getElementById('search').value.toLowerCase(),p=items.find(x=>(x.n+x.b).toLowerCase().includes(q));if(!p){alert('Товар не найден. Попробуйте Logitech, Xiaomi или Apple.');return}document.getElementById('title').textContent=p.n;document.getElementById('crumb').textContent=p.n;document.getElementById('brand').textContent=p.b+' · В НАЛИЧИИ';document.getElementById('icon').textContent=p.i;}
+    function favorite(){let h=document.getElementById('heart'),t=document.getElementById('favText'),on=h.textContent==='♥';h.textContent=on?'♡':'♥';t.textContent=on?'В избранное':'В избранном';}
+    function sortOffers(){offers.sort((a,b)=>asc?a[1]-b[1]:b[1]-a[1]);asc=!asc;document.getElementById('sort').textContent='По цене '+(asc?'↑':'↓');showOffers();}document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')searchProduct()});showOffers();
+  </script>
+</body></html>
